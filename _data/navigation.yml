@@ -1,0 +1,14 @@
+# main links
+main:
+#     - title: "CV"
+#       url: 
+#       description: "Personal CV"
+    - title: "Categories"
+      url: /categories/
+      description: "Posts by Categories"
+    - title: "Tags"
+      url: /tags/
+      description: "Posts by Tags"
+
+
+# sidebar links
