@@ -26,7 +26,7 @@ Rstudio를 iPad에서 사용하기 위해서는 AWS를 이용해 서버 인스�
 
 ## AWS를 이용한 서버 인스턴스 생성
 
-![](../assets/images/2020-01-14-rstudio-server-on-ipad/aws.jpeg)
+![aws](https://user-images.githubusercontent.com/35002380/73628534-dc658900-4693-11ea-8e63-b58e7b66de1d.jpeg)
 
 <br>
 
@@ -36,7 +36,7 @@ AWS계정이 없는 경우 [AWS 홈페이지](https://aws.amazon.com/ko/)에서 
 
 <br>
 
-![](../assets/images/2020-01-14-rstudio-server-on-ipad/aws_home.png)
+![aws_home](https://user-images.githubusercontent.com/35002380/73628535-dc658900-4693-11ea-97b4-59afba287378.png)
 
 <br>
 
@@ -48,7 +48,7 @@ AWS Marketplace에 이미 등록되어 있어 AWS에서 새 인스턴스를 생�
 
 <br>
 
-![](../assets/images/2020-01-14-rstudio-server-on-ipad/ami.jpeg)
+![ami](https://user-images.githubusercontent.com/35002380/73628533-dbccf280-4693-11ea-9df7-22a3d042cb0a.jpeg)
 
 <br>
 
@@ -59,7 +59,7 @@ AWS Marketplace에 이미 등록되어 있어 AWS에서 새 인스턴스를 생�
 
 <br>
 
-![](../assets/images/2020-01-14-rstudio-server-on-ipad/inbound.jpeg)
+![inbound](https://user-images.githubusercontent.com/35002380/73628537-dc658900-4693-11ea-9834-4a6004deaf4f.jpeg)
 
 <br>
 
@@ -67,7 +67,7 @@ AWS Marketplace에 이미 등록되어 있어 AWS에서 새 인스턴스를 생�
 
 <br>
 
-![](../assets/images/2020-01-14-rstudio-server-on-ipad/ec2.jpeg)
+![ec2](https://user-images.githubusercontent.com/35002380/73628536-dc658900-4693-11ea-8c4b-71028a8cbdfd.jpeg)
 
 <br>
 
@@ -78,7 +78,7 @@ AWS Marketplace에 이미 등록되어 있어 AWS에서 새 인스턴스를 생�
 
 <br>
 
-![](../assets/images/2020-01-14-rstudio-server-on-ipad/rstudio.jpeg)
+![rstudio](https://user-images.githubusercontent.com/35002380/73628538-dcfe1f80-4693-11ea-87c2-086100a38d6f.jpeg)
 
 <br>
 

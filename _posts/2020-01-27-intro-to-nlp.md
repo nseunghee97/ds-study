@@ -22,7 +22,8 @@ NLP는 **인간의 언어가 사용되는 실세계의 모든 영역**에서 활
 
 ## 자연어 분석 단계
 
-![text-preprocessing-step](../assets/images/2020-01-27-intro-to-nlp/text-preprocessing-step.jpg)
+![text-preprocessing-step](https://user-images.githubusercontent.com/35002380/73628767-804f3480-4694-11ea-972d-6c617bd1aeca.jpg)
+
 
 **자연어 분석 단계**는 다음과 같은 4단계를 통해 이루어진다.
 
@@ -60,7 +61,7 @@ ex. "감기는" 의 경우 세 가지 의미로 분석 가능
 
 1. 입력 문장에 대한 **문법 구조**를 분석 => **구문 트리** 로 나타냄
 
-![syntax-tree](../assets/images/2020-01-27-intro-to-nlp/syntax-tree.jpg)
+![syntax-tree](https://user-images.githubusercontent.com/35002380/73628765-804f3480-4694-11ea-9962-348396ff47e0.jpg)
 
 2. 문장이 **문법적으로 옳은가**를 판단 : concerns the **proper ordering of words**
 <br>
