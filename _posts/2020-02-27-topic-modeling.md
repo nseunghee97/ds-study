@@ -73,7 +73,7 @@ toc_sticky: true
   <mo stretchy="false">)</mo>
 </math>
 
-<br>
+
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>V</mi>
@@ -110,7 +110,7 @@ toc_sticky: true
   <mo stretchy="false">)</mo>
 </math>
 
-<br>
+
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
@@ -125,7 +125,6 @@ toc_sticky: true
   </mtext>
 </math>
 
-<br>
 <br>
 
 이 때, SVD를 통해 나온 대각행렬 Σ의 **주대각원소**를 행렬 A의 **특이값**(singular value)라고 하며, 이 특이값들은 Σ 내에서 **내림차순으로 정렬**되어있다는 특징을 가진다.
@@ -268,8 +267,8 @@ LDA는 모든 문서의 모든 단어에 대해 k개 중 하나의 토픽을 랜
 
 3. **모든 문서의 모든 단어에 대해서 아래의 사항을 반복 진행한다.** (iterative)
     1. 어떤 문서의 각 단어 w는 자신은 잘못된 토픽에 할당되어져 있지만, 다른 단어들은 전부 올바른 토픽에 할당되어져 있는 상태라고 가정한 후, 아래의 두 가지 기준에 따라 단어 w에 대해 토픽을 재할당한다.
-        - p(topic t | document d) : 문서 d의 단어들 중 토픽 t에 해당하는 단어들의 비율
-        - p(word w | topic t) : 단어 w를 갖고 있는 모든 문서들 중 토픽 t가 할당된 비율
+        - p(topic t \| document d) : 문서 d의 단어들 중 토픽 t에 해당하는 단어들의 비율
+        - p(word w \| topic t) : 단어 w를 갖고 있는 모든 문서들 중 토픽 t가 할당된 비율
 
 
 LDA가 토픽의 제목을 정해주지 않지만, 실행 결과를 통해 각각의 토픽이 어떠한 단어를 담고 있는 토픽인지 판단 가능하다.
