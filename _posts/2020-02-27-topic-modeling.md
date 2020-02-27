@@ -6,6 +6,7 @@ categories:
 tags:
   - NLP
   - Topic Modeling
+  - python
 toc: true
 toc_sticky: true
 ---
