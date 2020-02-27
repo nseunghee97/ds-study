@@ -135,6 +135,7 @@ toc_sticky: true
 그러나, LSA의 경우 full SVD에서 나온 3개의 행렬에서 일부 벡터들을 삭제시켜 차원을 축소한 **절단된 SVD**(truncated SVD)를 사용한다.
 
 ![truncated-svd](https://wikidocs.net/images/page/24949/svd%EC%99%80truncatedsvd.PNG)
+
 출처 : [딥 러닝을 이용한 자연어 처리 입문](https://wikidocs.net/24949)
 
 절단된 SVD는 대각 행렬 Σ의 대각 원소의 값 중 **상위 t개만** 남게 된다. (즉, 특이값 중 **값이 큰 상위 t개만** 남게 된다)
