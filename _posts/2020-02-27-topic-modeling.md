@@ -73,7 +73,7 @@ toc_sticky: true
   <mo stretchy="false">)</mo>
 </math>
 
-
+<br>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>V</mi>
@@ -110,7 +110,7 @@ toc_sticky: true
   <mo stretchy="false">)</mo>
 </math>
 
-
+<br>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
