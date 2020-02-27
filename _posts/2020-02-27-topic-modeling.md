@@ -6,6 +6,7 @@ categories:
 tags:
   - NLP
   - Topic Modeling
+  - python
 toc: true
 toc_sticky: true
 ---
@@ -35,8 +36,7 @@ toc_sticky: true
   </msup>
 </math>
 
-</br>
-
+<br>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>U</mi>
@@ -73,6 +73,8 @@ toc_sticky: true
   <mo stretchy="false">)</mo>
 </math>
 
+<br>
+
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mi>V</mi>
   <mo>:</mo>
@@ -107,7 +109,8 @@ toc_sticky: true
   </msup>
   <mo stretchy="false">)</mo>
 </math>
-</br>
+
+<br>
 
 <math xmlns="http://www.w3.org/1998/Math/MathML">
   <mrow class="MJX-TeXAtom-ORD">
@@ -122,8 +125,8 @@ toc_sticky: true
   </mtext>
 </math>
 
-</br>
-</br>
+<br>
+<br>
 
 이 때, SVD를 통해 나온 대각행렬 Σ의 **주대각원소**를 행렬 A의 **특이값**(singular value)라고 하며, 이 특이값들은 Σ 내에서 **내림차순으로 정렬**되어있다는 특징을 가진다.
 
@@ -134,6 +137,7 @@ toc_sticky: true
 그러나, LSA의 경우 full SVD에서 나온 3개의 행렬에서 일부 벡터들을 삭제시켜 차원을 축소한 **절단된 SVD**(truncated SVD)를 사용한다.
 
 ![truncated-svd](https://wikidocs.net/images/page/24949/svd%EC%99%80truncatedsvd.PNG)
+
 출처 : [딥 러닝을 이용한 자연어 처리 입문](https://wikidocs.net/24949)
 
 절단된 SVD는 대각 행렬 Σ의 대각 원소의 값 중 **상위 t개만** 남게 된다. (즉, 특이값 중 **값이 큰 상위 t개만** 남게 된다)
