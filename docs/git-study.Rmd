@@ -1,0 +1,204 @@
+---
+title: "Git을 활용한 버전제어"
+author: "남승희"
+date:  "`r Sys.Date()`"
+output:
+  html_document:
+    keep_md: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+
+# Git을 이용한 버전제어의 필요성
+
+Collaboration하여 작업하는 경우가 점점 많아짐에 따라 공동 작업에 최적화된 버전관리의 필요성이 대두되었다.  
+(zip 파일로 묶어서 collaborators에게 일일히 전송하고, 받은 파일에서 바뀐 점을 일일히 비교하고 확인하는 것은 비효율적이며, 실수가 발생하기 쉽다.)  
+또한, 오픈소스를 통한 개발이 활발해지고 있다.
+
+따라서 collaboration을 통해 버전제어가 가능한 **GitHub 서비스**가 등장하였다.
+
+Github를 사용하면
+
+- 누가 언제 무엇을 했는지를 포함해서, 작업에 대한 개념적 단계가 문서화된다. 모든 단계는 (커밋 ID)식별자로 도장이 찍힌다.
+- 로컬이 아닌 서버에 저장하므로, 로컬에서 파일의 손상 혹은 삭제를 염려하지 않아도 된다.
+- commit시 바뀐 부분을 한눈에 확인할 수 있다.
+- git 저장소를 공유하는 사람들과 한번에 빠른 파일 공유가 가능하다.
+
+와 같은 장점이 있다.
+
+# Git 사용환경 구축 - Git Bash
+
+구글에서 자료를 찾으면 대부분의 터미널 명령어가 Bash 기준으로 나오기 때문에 Windows를 사용하는 경우 기본프로그램인 cmd 대신에 Git bash를 권장한다.  
+리눅스나 맥 user의 경우 그냥 bash를 사용하면 된다.
+
+**[Git Bash 다운로드](https://git-scm.com/)**
+
+아래의 명령어는 모두 git bash 사용을 전제로 한다.
+
+# Git 초기 환경설정
+
+git commit에 사용될 사용자의 이름과 이메일을 등록하는 과정으로, 최초 1회만 실행한다.
+
+```{bash, eval=FALSE}
+# git commit에 사용될 username 등록
+git config --global user.name "your_name"
+
+# git commit에 사용될 email 등록
+git config --global user.email "your_email@example.com"
+
+# 설정한 내용 확인
+git config --list
+
+```
+
+# Git repository 생성
+
+크게 두 가지 방법이 있다
+
+1. 로컬 디렉토리를 git 저장소로 만들어 Github의 새 저장소와 연동하는 방법
+2. Github에 존재하는 저장소를 내 로컬 디렉토리로 복사해오는 방법
+
+저장소로 이용하고자 하는 로컬 디렉토리를 찾아간 다음  
+1번 방법은 `git init`과 `git remote` 명령어를 이용하고,  
+2번 방법은 `git clone` 명령어를 이용하여 로컬에 Git 저장소를 생성한다.
+
+## git init
+
+**로컬에 존재하는 디렉토리를 로컬 git 저장소로 만드는 방법이다.**
+
+```{bash, eval=FALSE}
+# 1. git 저장소로 만들고자하는 로컬 디렉토리 파일로 경로를 설정.
+cd 디렉토리
+
+# 2. 로컬 저장소로 설정.
+# 디렉토리 옆에 (master) 브랜치가 보이면 성공한 것이다.
+git init
+
+# 3. init을 취소하는 명령어.
+rm -rf .git
+
+```
+
+<div id="dir"></div>
+
+- 디렉토리 찾아가는 방법
+
+1. git bash 내에서 `cd`(change directory) 명령어로 경로를 설정한다
+2. 탐색기 내에서 해당 폴더로 이동하여 마우스 우클릭 후 `Git Bash here` 버튼을 클릭한다.
+
+- 로컬 저장소 설정
+
+`git init`을 입력하면 master branch가 생성되고 git bash 현재 디렉토리 명에 branch 이름(master)이 추가된다.
+
+(master)가 보인다면(혹은 다른 branch 이름이 보인다면) 해당 폴더는 git 저장소가 설정된 폴더이다.
+
+`git init`을 실행하면 `.git`확장자의 git 저장소가 숨김 폴더로 생성되고 git파일들이 등록된다. 해당 디렉토리가 git 저장소임을 알려주는 폴더이기 때문에 이 `.git` 폴더는 건드리는 일이 없도록 해야 한다.
+
+```{bash, eval=FALSE}
+ls
+ls -a
+```
+
+![](images/git-study/ls.jpg)
+
+`ls` 명령어를 사용하면 표면적으로는 변한 것 없는 것처럼 보이지만, 모든 것을 보여주는 `-a` 플래그를 추가하면 해당 디렉토리 내부에 `.git`으로 불리는 숨겨진 디렉토리가 생성된 것을 확인할 수 있다. 
+
+`rm -rf .git` 명령어를 입력하는 경우 `.git`폴더가 사라지기 때문에 해당 디렉토리는 더이상 로컬 저장소로 역할하지 않는다. (즉, init을 취소하게 된다.)
+
+
+## git remote
+
+**로컬 git 저장소와 Github의 원격저장소를 연결한다.**
+
+우선 [Github 홈페이지](http://github.com/)에 로그인(회원가입) 한 후 새 repository를 만든다.
+
+해당 repository에 들어가서 우측의 초록색 `Clone or download` 버튼을 클릭한 후 Clone with HTTPS에 나오는 주소를 클립보드에 복사한다.
+
+![](images/git-study/clone.jpg)
+
+```{bash, eval=FALSE}
+git remote add origin Github저장소주소
+
+```
+
+`git init`을 실행한 디렉토리로 이동하여 Git bash 창에 위의 명령어를 입력한다. Github저장소주소 부분에 복사한 주소를 붙여넣기 한다.  
+*(붙여넣기 : `shift`+`insert`)*
+
+해당 작업을 통해 로컬 디렉토리와 Github 저장소를 연결한다.
+
+## git clone
+
+**내 저장소를 완전히 새로 내려받고 싶은 경우 혹은 남의 github 코드를 내 컴퓨터에 다운받아서 실행해보고 싶은 경우**
+
+Github 사이트에서 해당 repository를 찾은 후 앞의 경우와 마찬가지로 `Clone or download` 버튼을 눌러 Github 저장소의 주소를 복사한다.
+
+해당 repository의 파일들을 저장할 <a href="#dir">로컬 디렉토리를 찾아간</a> 다음, 아래의 명령어를 Git bash에 입력한다.  
+마찬가지로 Github저장소주소 에는 복사한 Github 저장소의 주소를 붙여넣는다.  
+*(붙여넣기 : `shift`+`insert`)*
+
+```{bash, eval=FALSE}
+git clone Github저장소주소
+```
+
+`git clone`의 경우 권한이 필요하면 Github 아이디 및 패스워드를 입력해야한다.
+
+---
+
+**요약**
+
+1. 로컬 디렉토리를 git 저장소로 만들어 Github의 새 저장소와 연동하는 방법
+
+![](images/git-study/gitRemote.jpg)
+
+2. Github에 존재하는 저장소를 내 로컬 디렉토리로 복사해오는 방법
+
+![](images/git-study/gitClone.jpg)
+
+# Git 버전제어
+
+## git pull
+
+**원격 저장소에 반영된 변경사항을 탐지하여 로컬 저장소를 갱신하는 명령어이다.**
+
+여러 대의 컴퓨터에서 작업하는 경우 `git pull`을 수시로 작업해 주는 것이 좋다.  
+로컬 저장소에 반영되지 않은 신규 업데이트가 원격 저장소에 있는 경우 <a href="#push">git push</a>가 불가능하기 때문이다.
+
+## git status
+
+
+
+## git add
+
+## git commit
+
+<div id=push></div>
+
+## git push
+
+## git log
+
+
+
+# Git branch
+
+conflicts 대응
+
+## branch 생성 및 commit
+
+## merge
+
+# 참고) 기본적인 명령어
+
+다음은 git 명령어 외에 command 창을 다룰 때 숙지하고 있으면 좋은 명령어들이다.
+
+- 현 디렉토리 내의 파일 또는 폴더 목록 : `ls`(list)
+    - `-a` : 숨김 파일 및 폴더까지 모든 요소를 보여줌.
+- 파일의 내용 보기 : `cat` 파일명
+- 특정 문자 검색 : `grep`
+- 디렉터리 이동 : `cd`(change directory) 
+- 디렉터리 생성 : `mkdir`(make directory) 디렉터리명
+- 파일 삭제 : `rm`(remove) 파일명
+- 파일 생성 : `touch` 파일명
